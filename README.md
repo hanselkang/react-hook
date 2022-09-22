@@ -1,5 +1,5 @@
 
-### jetbrain intellij ESlint issue
+### intellij Eslint issue
 
 
 npm install --g eslint
@@ -7,8 +7,8 @@ npm install --g eslint
 npm install eslint@8.22.0 --save-exact
 
 
-[useRef1](#useref-1)
-[useRef2](#useref-2)
+[useRef1](#useref-1) |
+[useRef2](#useref-2) |
 [useContext](#usecontext)
 
 ## useRef 1
@@ -24,8 +24,8 @@ npm install eslint@8.22.0 --save-exact
     returns 0
 
 useRef is like a “box” that can hold a mutable value in its .current property.
-Keep in mind that useRef doesn’t notify you when its content changes.\
-Mutating the .current property doesn’t cause a re-render. \
+Keep in mind that useRef does not notify you when its content changes.\
+Mutating the .current property does not cause re-render. \
 If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a callback ref instead.
 
     const countRef = useRef(0);
@@ -48,7 +48,7 @@ If you want to run some code when React attaches or detaches a ref to a DOM node
         </div>
     )}
 
-<img src="src/src/useRef.png" width="500">
+<img alt="useRef example" src="src/src/useRef.png" width="500">
 
 
 ## useRef-2
@@ -133,7 +133,7 @@ or in header
     )
 
 
-<img src="src/src/useContext.png" width="500">
+<img src="src/src/useContext.png" width="500" alt="useContext example">
 
 # Getting Started with Create React App
 
@@ -172,9 +172,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint ... ) right into your project, so you have full control over them. All the commands except `eject` will still work, but they will point to the copied scripts, so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you could not customize it when you are ready for it.
 
 ## Learn More
 
