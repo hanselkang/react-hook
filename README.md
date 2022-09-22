@@ -7,8 +7,11 @@ npm install --g eslint
 npm install eslint@8.22.0 --save-exact
 
 
-## useRef 1
+[useRef1](#useref-1)
+[useRef2](#useref-2)
+[useContext](#usecontext)
 
+## useRef 1
 
     const refContainer = useRef(initialValue);
     
@@ -24,7 +27,6 @@ useRef is like a “box” that can hold a mutable value in its .current propert
 Keep in mind that useRef doesn’t notify you when its content changes.\
 Mutating the .current property doesn’t cause a re-render. \
 If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a callback ref instead.
-
 
     const countRef = useRef(0);
     const [count, setCount] = useState(0);
@@ -49,7 +51,7 @@ If you want to run some code when React attaches or detaches a ref to a DOM node
 <img src="src/src/useRef.png" width="500">
 
 
-## useRef 2
+## useRef-2
 
 focus on input.
 
@@ -74,9 +76,64 @@ focus on input.
         )
     }
 
+## useContext
+
+in 'context' folder,
+
+    import { createContext } from 'react';
+    
+    export const LearnUserContext = createContext(null);
+
+in parent component/container
+
+    const [isDark, setIsDark] = useState(false);
+    const user = "userName"
+
+    return (
+        <LearnUserContext.Provider value={{isDark, setIsDark, user}}>
+        <div className="App">
+            <HookContainer/>
+        </div>
+        </LearnUserContext.Provider>
+    );
+
+in child components(anywhere you want to use)
+
+    const {isDark, user} = useContext(LearnUserContext)
+    return (
+        <div className="child"
+             style={{
+                 backgroundColor: isDark ? 'black' : 'white',
+                 color          : isDark ? 'white' : 'black',
+             }}>
+            <p>Hello {user} it's useContext</p>
+        </div>
+    )
+
+or in header
+
+    const {isDark, setIsDark} = useContext(LearnUserContext)
+
+    const toggleMode = () => {
+        setIsDark(!isDark)
+    }
+
+    return (
+        <header
+        className="header"
+        style={{
+            backgroundColor: isDark ? 'black' : 'white',
+            color          : isDark ? 'white' : 'black',
+        }}>
+
+            <p>header</p>
+            <button className="button" onClick={toggleMode}>Dark Mode</button>
+            <hr/>
+        </header>
+    )
 
 
-
+<img src="src/src/useContext.png" width="500">
 
 # Getting Started with Create React App
 
