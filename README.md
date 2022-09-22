@@ -1,8 +1,53 @@
 
 ### jetbrain intellij ESlint issue
 
+
 npm install --g eslint
+
 npm install eslint@8.22.0 --save-exact
+
+
+## useRef 1
+
+
+    const refContainer = useRef(initialValue);
+    
+    initialValue = 0 
+    
+    { current : 0 } <-- not reloaded/refreshed by its
+    
+    in JSX -> {refContainer.current} 
+    
+    returns 0
+
+useRef is like a “box” that can hold a mutable value in its .current property.
+Keep in mind that useRef doesn’t notify you when its content changes.\
+Mutating the .current property doesn’t cause a re-render. \
+If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a callback ref instead.
+
+
+
+    const countRef = useRef(0);
+    const [count, setCount] = useState(0);
+
+    const increaseCountState = () => {
+        setCount(count + 1)
+    }
+
+    const increaseCountRef = () => {
+        countRef.current = countRef.current +1;
+    }
+    
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={increaseCountState}> Up</button>
+            <p>CountRef: {countRef.current}</p>
+            <button onClick={increaseCountRef}> Up</button>
+        </div>
+    )}
+
+![useRef example1](src/src/useRef.png)
 
 
 
