@@ -1,3 +1,13 @@
+
+### jetbrain intellij ESlint issue
+
+npm install --g eslint
+npm install eslint@8.22.0 --save-exact
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
