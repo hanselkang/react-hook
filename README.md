@@ -26,7 +26,6 @@ Mutating the .current property doesn’t cause a re-render. \
 If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a callback ref instead.
 
 
-
     const countRef = useRef(0);
     const [count, setCount] = useState(0);
 
@@ -47,7 +46,33 @@ If you want to run some code when React attaches or detaches a ref to a DOM node
         </div>
     )}
 
-![useRef example1](src/src/useRef.png)
+<img src="src/src/useRef.png" width="500">
+
+
+## useRef 2
+
+focus on input.
+
+    const HookUseRef2 = () => {
+    const inputRef = useRef();
+    
+        useEffect(() => {
+            console.log(inputRef)
+            inputRef.current.focus();
+        }, [])
+    
+        const welcomeMessage = () => {
+            alert(`Welcome! ${inputRef.current.value}!`);
+        }
+    
+    
+        return (
+            <>
+                <input ref={inputRef} type="text" placeholder="username"/>
+                <button onClick={welcomeMessage}>Login</button>
+            </>
+        )
+    }
 
 
 
