@@ -6,10 +6,76 @@ npm install --g eslint
 
 npm install eslint@8.22.0 --save-exact
 
-
+[useMemo1](#usememo-1) |
+[useMemo2](#usememo-2) |
 [useRef1](#useref-1) |
 [useRef2](#useref-2) |
 [useContext](#usecontext)
+
+## useMemo 1
+
+Use useMemo when you don't want to call a heavy function whenever you change the others
+It returns a memoized value.
+
+    const simpleCalculate = (number) => {
+        console.log('simple!')
+        return number + 321
+    };
+
+    const hardCalculate = (number) => {
+        console.log('hard!')
+        for (let i = 0; i < 999999999; i++) {} // thinking time
+        return number + 123
+    }
+
+    const [hardNumber, setHardNumber] = useState(0);
+    const [easyNumber, setEasyNumber] = useState(0);
+
+    // const hardSum = hardCalculate(hardNumber);
+    // hard calculation is not re-loaded but only when hardNumber is called
+    const hardSum = useMemo(()=> {
+        return hardCalculate(hardNumber)
+    }, [hardNumber])
+    const simpleSum = simpleCalculate(easyNumber);
+
+    const handleHardChange = (event) => {
+        setHardNumber(parseInt(event.target.value))
+    };
+
+    const handleSimpleChange = (event) => {
+        setEasyNumber(parseInt(event.target.value))
+    };
+
+<img alt="useMemo example1" src="src/src/useMemo0.png" width="500">
+
+Now even the number has changed, isLocation or isWork is not shown in console.
+
+## useMemo 2
+
+When it's object the object memory address is changed every time you re-render the page. 
+It's good to put the object in useMemo to avoid re-address the memory whenever you refreshes.
+
+    const work = useMemo(() => {
+        return {
+            work: isWork ? 'desk' : 'sofa'
+        }
+    }, [isWork])
+
+<img alt="useMemo example1" src="src/src/useMemo1.png" width="500">
+
+
+    const location = isTravel ? 'somewhere' : 'home'
+    // but if it's object?
+
+    const work = {
+        work: isWork ? 'desk' : 'sofa'
+    }
+    
+    // it calls useEffect since object value changes its address in memory everytime.
+
+
+
+<img alt="useMemo example2" src="src/src/useMemo2.png" width="500">
 
 ## useRef 1
 

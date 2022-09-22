@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {LearnUserContext} from "../../context/LearnUserContext";
+import {LearnUserContext} from "../context/LearnUserContext";
 
 const Header = () => {
 
